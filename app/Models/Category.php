@@ -22,4 +22,10 @@ class Category extends Model
     // protected $guarded = [
     //     'id'
     // ];
+
+    // Relasi
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
 }

@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CourseKeypoint extends Model
+class CourseVideo extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name',
-        'course_id'
+        'path_video',
+        'course_id',
     ];
 
     public function course()
