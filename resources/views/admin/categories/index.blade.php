@@ -28,10 +28,11 @@
                             <h3 class="text-xl font-bold text-indigo-950">{{ $category->created_at }}</h3>
                         </div>
                         <div class="flex-row items-center hidden md:flex gap-x-3">
-                            <a href="#" class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
+                            <a href="{{ route('admin.categories.edit', $category) }}"
+                                class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
                                 Edit
                             </a>
-                            <form action="#" method="POST">
+                            <form action="{{ route('admin.categories.destroy', $category) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="px-6 py-4 font-bold text-white bg-red-700 rounded-full">
