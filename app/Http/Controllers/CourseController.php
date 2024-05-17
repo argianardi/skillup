@@ -112,7 +112,7 @@ class CourseController extends Controller
             return redirect()->route('admin.courses.index');
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->route('admin.courses.index')->with('error', 'Server error');
+            return redirect()->route('admin.courses.index')->with('error', 'Failed to delete the course. Please try again later.');
         }
     }
 }
