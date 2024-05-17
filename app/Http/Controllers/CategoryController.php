@@ -99,7 +99,7 @@ class CategoryController extends Controller
             return redirect()->route('admin.categories.index');
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->route('admin.categories.index')->with('error', 'Server error');
+            return redirect()->route('admin.categories.index')->with('error', 'Failed to delete the category. Please try again later.');
         }
     }
 }
