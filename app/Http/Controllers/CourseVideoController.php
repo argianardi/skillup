@@ -54,15 +54,18 @@ class CourseVideoController extends Controller
      */
     public function edit(CourseVideo $courseVideo)
     {
-        //
+        return view('admin.course_videos.edit', compact('courseVideo'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CourseVideo $courseVideo)
+    public function update(StoreCourseVideoRequest $request, CourseVideo $courseVideo)
     {
-        //
+        $validated = $request->validated();
+        $courseVideo->update($validated);
+
+        return redirect()->route('admin.courses.show', $courseVideo->course_id);
     }
 
     /**
@@ -70,6 +73,15 @@ class CourseVideoController extends Controller
      */
     public function destroy(CourseVideo $courseVideo)
     {
-        //
+        DB::beginTransaction();
+
+        try {
+            $courseVideo->delete();
+            DB::commit();
+            return redirect()->route('admin.courses.show', $courseVideo->course_id);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->route('admin.courses.show', $courseVideo->course_id)->with('error', 'Failed to delete the course. Please try again later.');
+        }
     }
 }
