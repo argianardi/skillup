@@ -37,12 +37,14 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('courses', CourseController::class)
             ->middleware('role:owner|teacher');
+        Route::resource('courses', CourseController::class)
+            ->middleware('role:owner|teacher');
 
         Route::resource('subscribe_transactions', SubscribeTransactionController::class)
             ->middleware('role:owner');
 
         Route::get('/add/video/{course:id}', [CourseVideoController::class, 'create'])->name('course.add_video')->middleware('role:teacher|owner');
-        Route::post('/add/video/{course:id}', [CourseVideoController::class, 'store'])->name('course.add_video.save')->middleware('role:teacher|owner');
+        Route::post('/add/video/save/{course:id}', [CourseVideoController::class, 'store'])->name('course.add_video.save')->middleware('role:teacher|owner');
 
         Route::resource('course_videos', CourseVideoController::class)
             ->middleware('role:owner|teacher');
