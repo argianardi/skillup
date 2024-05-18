@@ -66,11 +66,11 @@
 
 
                         <div class="flex flex-row items-center gap-x-3">
-                            <a href="{{ route('admin.courses.edit', $course) }}"
+                            <a href="{{ route('admin.course_videos.edit', $video) }}"
                                 class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
                                 Edit Video
                             </a>
-                            <form action="#" method="POST">
+                            <form action="{{ route('admin.course_videos.destroy', $video) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="px-6 py-4 font-bold text-white bg-red-700 rounded-full">
