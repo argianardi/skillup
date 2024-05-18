@@ -38,7 +38,8 @@
                             <h3 class="text-xl font-bold text-indigo-950">{{ $course->teacher->user->name }}</h3>
                         </div>
                         <div class="flex-row items-center hidden md:flex gap-x-3">
-                            <a href="#" class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
+                            <a href="{{ route('admin.courses.show', $course) }}"
+                                class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
                                 Manage
                             </a>
                             <form action="{{ route('admin.courses.destroy', $course) }}" method="POST">
