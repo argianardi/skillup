@@ -80,3 +80,42 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
     php artisan migrate:fresh
     ```
 -   Di bagian model tambahkan kolom (field) baru ke dalam daftar $fillable, untuk menentukan kolom-kolom mana saja yang boleh diisi secara massal (mass assignable).
+-   Buat relasi antar tabel.
+-   Buat method di model user, untuk memeriksa apakah user aktive berlangganan (is active subscription) atau tidak
+-   Buat Route untuk admin dan tambahkan role di dalamnya
+-   Buat controller baru untuk membuat user dapat melihat overview semua kelas tanpa harus login, dengan command
+    ```
+    php artisan make:controller FrontController
+    ```
+-   Modifikasi Front Controller, tambahkan function untuk menampilkan view yang diiginkan(halaman yang bisa diakses oleh user tanpa login)
+-   Buat route untuk Front Controller menggunaka function Controller yang barusan dimodif tadi
+-   Install seeder
+-   Buat defult role dan defult user sebagai owner di database seeder, yang nantinya secara default ditambahkan di database
+-   Tambahkan assign role di event register (terletak di src/Illuminate/Auth/Events/Registered.php) untuk dijadikan role secara default untuk user yang baru daftar.
+-   Daftarka Role spatie kedalam bootstrap/app.php
+-   Modifikasi controller sesuai kebutuhan
+-   Perbaiki tampilan UI di bagian view
+-   Untuk memunculkan folder storege (untuk menyimpan gambar pada fitur image upload) di folder public, command:
+    ```
+    php artisan storage:link
+    ```
+-   Membuat request berserta validate terpisah dari controller agar lebih mudah untuk di-maintenance dan reusable, dengan command
+    ```
+    php artisan make:request nama_file
+    ```
+-   Cara melakukan insert data secara manual menggunaka tinker.
+    -   Command
+        ```
+        php artisan tinker
+        ```
+    -   Kemudian lakukan command insert data, menggunakan model dan properti yang ingin ditambahkan data.
+        ```
+        App\Models\SubscribeTransaction::create([
+            'total_amount' => 900000,
+            'is_paid' => false,
+            'user_id' => 5,
+            'proof' => 'proof/cek.png',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        ```
