@@ -11,7 +11,7 @@
 
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
-                        <div class="w-full py-3 text-white bg-red-500 rounded-3xl">
+                        <div class="w-full p-3 mt-2 text-white bg-red-500 rounded-3xl">
                             {{ $error }}
                         </div>
                     @endforeach
